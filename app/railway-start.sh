@@ -12,5 +12,7 @@ export CLICKHOUSE_BACKUP_METRICS_ENABLED="${CLICKHOUSE_BACKUP_METRICS_ENABLED:-f
 export SIGN_UP_MODE="${SIGN_UP_MODE:-invite_only}"
 # Railway's edge and private network: read the caller from X-Forwarded-For only from them.
 export TRUSTED_PROXY_ADDRESSES="${TRUSTED_PROXY_ADDRESSES:-10.0.0.0/8,100.64.0.0/10,172.16.0.0/12,192.168.0.0/16,127.0.0.0/8,::1/128,fc00::/7}"
+# Browsers and SDKs upload files through LangWatch, so the bucket stays private.
+export STORED_OBJECTS_UPLOADS="${STORED_OBJECTS_UPLOADS:-through-langwatch}"
 cd /app/apps/api
 exec pnpm --silent run start
