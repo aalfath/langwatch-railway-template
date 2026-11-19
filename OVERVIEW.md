@@ -41,7 +41,7 @@ Services in this template:
 
 **After deploy:** set `ADMIN_EMAILS` on the deploy form to your own email. Open the LangWatch URL, choose sign up and register with that address; you become the operator (the `/ops` pages). Sign-up is `invite_only`, so nobody else can create an account unless you invite them from the app. Create your organization and project, add a model provider key under Settings to use evaluations and the playground, and copy the project's API key into your SDK with `LANGWATCH_ENDPOINT` set to your Railway URL.
 
-**Optional settings** (add on the LangWatch and Workers services): email delivery (`SMTP_HOST`, `SMTP_PORT`, `SMTP_USERNAME`, `SMTP_PASSWORD`, `EMAIL_DEFAULT_FROM`, or `SENDGRID_API_KEY`), `SIGN_UP_MODE=open` to let anyone sign up, and `DISABLE_USAGE_STATS=true` to stop LangWatch's daily anonymous usage report. A custom domain goes on the LangWatch service; `BASE_HOST`, `NEXTAUTH_URL` and `LANGWATCH_ENDPOINT` follow Railway's public domain variable.
+**Optional settings** (add on the LangWatch and Workers services): email delivery (`EMAIL_PROVIDER=smtp` with `SMTP_URL` and `EMAIL_DEFAULT_FROM`, or `SENDGRID_API_KEY`), `SIGN_UP_MODE=open` to let anyone sign up, and `DISABLE_USAGE_STATS=true` to stop LangWatch's daily anonymous usage report. A custom domain goes on the LangWatch service; `BASE_HOST`, `NEXTAUTH_URL` and `LANGWATCH_ENDPOINT` follow Railway's public domain variable.
 
 **Sizing:** LangEvals runs one worker (`CPU_COUNT=1`) and ClickHouse is tuned for 1 CPU and 2 GB (`CH_CPU`, `CH_RAM`). Raise those variables if you give the services more resources. The AI Gateway and the Langy assistant (optional add-ons upstream) are not included.
 
