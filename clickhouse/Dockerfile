@@ -5,6 +5,9 @@ FROM langwatch/clickhouse-serverless:0.5.0@sha256:1e6174ac0b7bd4cdaf45d4bbcb783c
 # rather than the whole host. Override CH_CPU and CH_RAM as variables to grow it.
 ENV CH_CPU=1 \
     CH_RAM=2Gi
-# Railway mounts volumes owned by root. Start as root so the official entrypoint
-# chowns /var/lib/clickhouse and then drops to the clickhouse user itself.
+# Railway mounts volumes owned by root: start as root, hand the volume to the
+# clickhouse user (uid 101) and drop to it before the server starts.
 USER 0:0
+COPY --chmod=755 railway-start.sh /railway-start.sh
+ENTRYPOINT ["/railway-start.sh"]
+CMD ["clickhouse-server"]
