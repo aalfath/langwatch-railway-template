@@ -26,6 +26,7 @@ The only prompt is `ADMIN_EMAILS`, the email of the first administrator; only th
 - `NEXTAUTH_SECRET`, `CREDENTIALS_SECRET` (64 hex), `LANGWATCH_NLP_INTERNAL_SECRET`, `CLICKHOUSE_PASSWORD`: generated per deploy.
 - `DATABASE_URL`, `REDIS_URL`, `CLICKHOUSE_URL`, `S3_*`, `LANGWATCH_NLP_SERVICE`, `LANGEVALS_ENDPOINT`: references to the other services.
 - `BASE_HOST`, `NEXTAUTH_URL`, `LANGWATCH_ENDPOINT`: the LangWatch service's public domain.
+- `RAILWAY_HEALTHCHECK_TIMEOUT_SEC=1200` on LangWatch and Workers: the first install runs about 570 upgrade steps before the app reports ready, longer than Railway's default 300 s health check window.
 
 Optional settings (SMTP, `SIGN_UP_MODE=open`, `DISABLE_USAGE_STATS=true`) are described in the template overview, [`OVERVIEW.md`](OVERVIEW.md).
 
